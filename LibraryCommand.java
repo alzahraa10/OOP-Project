@@ -1,5 +1,5 @@
 import java.util.Stack;
-
+// Command Pattern - encapsulates actions with undo support
 // DESIGN PATTERN 6: COMMAND
 // Encapsulates checkout/return actions so they can be undone
 
