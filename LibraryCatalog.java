@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.ArrayList; // Singleton Pattern - only one catalog instance
 import java.util.List;
 
 // DESIGN PATTERN 1: SINGLETON
