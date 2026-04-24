@@ -1,4 +1,5 @@
 // DESIGN PATTERN 3: STRATEGY
+// Strategy Pattern - interchangeable fee 
 // Different fee calculation strategies for different member types
 
 public interface FeeStrategy {
