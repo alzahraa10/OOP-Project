@@ -48,3 +48,29 @@ The final demo will show a full checkout/return flow using all 6 patterns workin
 
 ### Sprint 3 Problems
 No blocking issues. All 6 patterns are implemented and integrated in Main.java.
+
+## Sprint 4
+
+### Design Patterns Added
+
+7. **Builder** — `MemberBuilder.java`: Builds `Member` objects step by step using a fluent interface. Sets name, member ID, membership type, and fee strategy. Automatically assigns the correct default fee strategy based on membership type if one is not explicitly provided.
+
+8. **Iterator** — `CatalogIterator.java`: Provides two custom iterators — `AllBooksIterator` walks every book in the catalog, and `AvailableBooksIterator` filters to only books not currently checked out. Both are accessed through `LibraryCatalog` via `getAllBooksIterator()` and `getAvailableBooksIterator()`.
+
+### Files Changed
+- `MemberBuilder.java` — new file (Builder pattern)
+- `CatalogIterator.java` — new file (Iterator pattern)
+- `Member.java` — updated to support new constructor used by MemberBuilder
+- `LibraryCatalog.java` — updated to expose iterator methods
+- `Main.java` — updated to demo all 8 patterns
+- `UML_Diagram.png` — updated to include all 8 patterns
+
+### UML Diagram
+See `UML_Diagram.png` in the root of this repository.
+
+### Final Submission Goals
+The final demo will show a full checkout/return flow using all 8 patterns working together — members are built with the Builder, the catalog is navigated with the Iterator, checkout/return uses the Command pattern with undo, fees are calculated via Strategy, items are created via Factory, book display uses Decorator, notifications go through the Observer, and a single catalog instance is maintained by the Singleton.
+
+### Sprint 4 Problems
+No blocking issues. Builder and Iterator integrate cleanly with the existing codebase. Member's original constructor is preserved so no existing code breaks.
+
