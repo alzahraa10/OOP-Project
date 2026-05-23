@@ -1,11 +1,13 @@
 // Library Checkout System - Main Demo
-// Demonstrates 6 Design Patterns:
+// Demonstrates 8 Design Patterns:
 //   1. Singleton   - LibraryCatalog
 //   2. Observer    - Member notifications
 //   3. Strategy    - Fee calculation
 //   4. Factory     - LibraryItem creation
 //   5. Decorator   - Book display features
 //   6. Command     - Checkout/return with undo
+//   7. Builder     - MemberBuilder
+//   8. Iterator    - CatalogIterator
 
 public class Main {
     public static void main(String[] args) {
@@ -97,6 +99,53 @@ public class Main {
 
         // Print final catalog
         catalog.printCatalog();
+
+        // -------------------------
+        // PATTERN 7: BUILDER
+        // -------------------------
+        System.out.println("\n--- Pattern 7: Builder (MemberBuilder) ---");
+
+        Member premiumMember = new MemberBuilder()
+            .setName("Diana")
+            .setMemberId("M004")
+            .setMembershipType("PREMIUM")
+            .build();
+
+        Member studentMember = new MemberBuilder()
+            .setName("Evan")
+            .setMemberId("M005")
+            .setMembershipType("STUDENT")
+            .build();
+
+        Member customMember = new MemberBuilder()
+            .setName("Fiona")
+            .setMemberId("M006")
+            .setMembershipType("STANDARD")
+            .setFeeStrategy(new PremiumFeeStrategy()) // custom override
+            .build();
+
+        System.out.println("Built: " + premiumMember);
+        System.out.println("Built: " + studentMember);
+        System.out.println("Built (custom fee): " + customMember);
+
+        // -------------------------
+        // PATTERN 8: ITERATOR
+        // -------------------------
+        System.out.println("\n--- Pattern 8: Iterator (CatalogIterator) ---");
+
+        System.out.println("All books in catalog:");
+        LibraryIterator allBooks = catalog.getAllBooksIterator();
+        while (allBooks.hasNext()) {
+            Book b = allBooks.next();
+            System.out.println("  " + b.getTitle() + " | Checked out: " + b.isCheckedOut());
+        }
+
+        System.out.println("\nAvailable books only:");
+        LibraryIterator availableBooks = catalog.getAvailableBooksIterator();
+        while (availableBooks.hasNext()) {
+            Book b = availableBooks.next();
+            System.out.println("  " + b.getTitle());
+        }
 
         System.out.println("\n========================================");
         System.out.println("   DEMO COMPLETE");
