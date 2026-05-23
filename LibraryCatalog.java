@@ -1,4 +1,4 @@
-import java.util.ArrayList; // Singleton Pattern - only one catalog instance
+import java.util.ArrayList;
 import java.util.List;
 
 // DESIGN PATTERN 1: SINGLETON
@@ -38,8 +38,20 @@ public class LibraryCatalog {
 
     public List<Book> getAllBooks() { return books; }
 
+    // DESIGN PATTERN 8: ITERATOR
+    // Returns an iterator over all books in the catalog
+    public LibraryIterator getAllBooksIterator() {
+        return new AllBooksIterator(books);
+    }
+
+    // Returns an iterator over only available (not checked out) books
+    public LibraryIterator getAvailableBooksIterator() {
+        return new AvailableBooksIterator(books);
+    }
+
     public void printCatalog() {
         System.out.println("\n=== Library Catalog ===");
         for (Book b : books) System.out.println(b);
     }
 }
+
