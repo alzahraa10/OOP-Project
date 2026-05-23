@@ -5,12 +5,22 @@ import java.util.List;
 public class Member implements LibraryObserver {
     private String name;
     private String memberId;
+    private String membershipType;
+    private FeeStrategy feeStrategy;
     private List<Book> checkedOutBooks;
     private List<String> notifications;
 
+    // Original constructor (kept for backward compatibility)
     public Member(String name, String memberId) {
+        this(name, memberId, "STANDARD", new StandardFeeStrategy());
+    }
+
+    // PATTERN 7: BUILDER — new constructor used by MemberBuilder
+    public Member(String name, String memberId, String membershipType, FeeStrategy feeStrategy) {
         this.name = name;
         this.memberId = memberId;
+        this.membershipType = membershipType;
+        this.feeStrategy = feeStrategy;
         this.checkedOutBooks = new ArrayList<>();
         this.notifications = new ArrayList<>();
     }
@@ -26,6 +36,8 @@ public class Member implements LibraryObserver {
     public List<Book> getCheckedOutBooks() { return checkedOutBooks; }
     public String getName() { return name; }
     public String getMemberId() { return memberId; }
+    public String getMembershipType() { return membershipType; }
+    public FeeStrategy getFeeStrategy() { return feeStrategy; }
 
     public void printNotifications() {
         System.out.println("\nNotifications for " + name + ":");
@@ -35,7 +47,7 @@ public class Member implements LibraryObserver {
 
     @Override
     public String toString() {
-        return String.format("Member[%s]: %s (%d books checked out)",
-            memberId, name, checkedOutBooks.size());
+        return String.format("Member[%s]: %s | Type: %s (%d books checked out)",
+            memberId, name, membershipType, checkedOutBooks.size());
     }
 }
