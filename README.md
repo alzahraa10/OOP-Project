@@ -74,3 +74,31 @@ The final demo will show a full checkout/return flow using all 8 patterns workin
 ### Sprint 4 Problems
 No blocking issues. Builder and Iterator integrate cleanly with the existing codebase. Member's original constructor is preserved so no existing code breaks.
 
+## Sprint 5
+
+### Design Patterns Status
+All 8 design patterns are fully implemented and integrated:
+
+1. Singleton — LibraryCatalog
+2. Observer — LibraryObserver / Member
+3. Strategy — FeeStrategy (Standard, Premium, Student)
+4. Factory — LibraryItemFactory
+5. Decorator — BookDecorator (Reserved, Featured, Damaged)
+6. Command — LibraryCommand + LibraryCommandManager
+7. Builder — MemberBuilder
+8. Iterator — CatalogIterator (AllBooks, AvailableBooks)
+
+### UML Diagram
+See `UML_Diagram-2.png` in the root of this repository.
+
+### Final Submission Goals
+The final demo will show a full library session: members built
+with Builder, catalog browsed with Iterator, books checked out
+and returned using Command (with undo), fees calculated via
+Strategy, items created via Factory, display enhanced with
+Decorator, notifications sent through Observer, all sharing
+one catalog via Singleton.
+
+### Sprint 5 Problems
+No issues. All 8 patterns are complete and working together
+in Main.java.
