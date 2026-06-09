@@ -1,4 +1,4 @@
-// Pattern 8: Iterator
+// DESIGN PATTERN 8: ITERATOR
 // Provides a way to walk through the catalog without exposing its internal list.
 
 import java.util.List;
