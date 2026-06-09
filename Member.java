@@ -10,12 +10,12 @@ public class Member implements LibraryObserver {
     private List<Book> checkedOutBooks;
     private List<String> notifications;
 
-    // Original constructor (kept for backward compatibility)
+    // Original constructor
     public Member(String name, String memberId) {
         this(name, memberId, "STANDARD", new StandardFeeStrategy());
     }
 
-    // PATTERN 7: BUILDER — new constructor used by MemberBuilder
+    // PATTERN 7: BUILDER — constructor used by MemberBuilder
     public Member(String name, String memberId, String membershipType, FeeStrategy feeStrategy) {
         this.name = name;
         this.memberId = memberId;
