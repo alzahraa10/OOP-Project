@@ -22,7 +22,7 @@ public class Main {
         System.out.println("--- Pattern 1: Singleton (LibraryCatalog) ---");
         LibraryCatalog catalog = LibraryCatalog.getInstance();
         LibraryCatalog catalog2 = LibraryCatalog.getInstance();
-        System.out.println("Same instance? " + (catalog == catalog2)); // true
+        System.out.println("Same instance? " + (catalog == catalog2));
         catalog.printCatalog();
 
         // -------------------------
@@ -31,8 +31,8 @@ public class Main {
         System.out.println("\n--- Pattern 2: Observer (Member Notifications) ---");
         Member alice = new Member("Alice", "M001");
         Member bob = new Member("Bob", "M002");
-        Member student = new Member("Charlie", "M003");
-        System.out.println("Members created: " + alice + ", " + bob + ", " + student);
+        Member charlie = new Member("Charlie", "M003");
+        System.out.println("Members created: " + alice + ", " + bob + ", " + charlie);
 
         // -------------------------
         // PATTERN 3: STRATEGY
@@ -64,13 +64,10 @@ public class Main {
         System.out.println("\n--- Pattern 5: Decorator (Book Display) ---");
         Displayable book = new BasicBook("The Great Gatsby");
         System.out.println("Basic:     " + book.getDescription() + " | Cost: $" + book.getCost());
-
         book = new FeaturedDecorator(book);
         System.out.println("Featured:  " + book.getDescription() + " | Cost: $" + book.getCost());
-
         book = new ReservedDecorator(book);
         System.out.println("Reserved:  " + book.getDescription() + " | Cost: $" + book.getCost());
-
         book = new DamagedDecorator(book);
         System.out.println("Damaged:   " + book.getDescription() + " | Cost: $" + book.getCost());
 
@@ -82,29 +79,20 @@ public class Main {
         Book gatsby = catalog.findByIsbn("978-0743273565");
         Book orwell = catalog.findByIsbn("978-0451524935");
 
-        // Checkout books
         manager.executeCommand(new CheckoutCommand(gatsby, alice));
         manager.executeCommand(new CheckoutCommand(orwell, bob));
-
-        // Return with late fees
         manager.executeCommand(new ReturnCommand(gatsby, alice, standardFee, 3));
         manager.executeCommand(new ReturnCommand(orwell, bob, studentFee, 2));
 
-        // Undo last action
         System.out.println("\nUndoing last command...");
         manager.undoLast();
-
-        // Print history
         manager.printHistory();
-
-        // Print final catalog
         catalog.printCatalog();
 
         // -------------------------
         // PATTERN 7: BUILDER
         // -------------------------
         System.out.println("\n--- Pattern 7: Builder (MemberBuilder) ---");
-
         Member premiumMember = new MemberBuilder()
             .setName("Diana")
             .setMemberId("M004")
@@ -121,7 +109,7 @@ public class Main {
             .setName("Fiona")
             .setMemberId("M006")
             .setMembershipType("STANDARD")
-            .setFeeStrategy(new PremiumFeeStrategy()) // custom override
+            .setFeeStrategy(new PremiumFeeStrategy())
             .build();
 
         System.out.println("Built: " + premiumMember);
@@ -132,7 +120,6 @@ public class Main {
         // PATTERN 8: ITERATOR
         // -------------------------
         System.out.println("\n--- Pattern 8: Iterator (CatalogIterator) ---");
-
         System.out.println("All books in catalog:");
         LibraryIterator allBooks = catalog.getAllBooksIterator();
         while (allBooks.hasNext()) {
