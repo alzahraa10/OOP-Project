@@ -28,7 +28,6 @@ Yes
 - Where is the entry point to your project?
 src/Main.java
 
-
 ## Sprint 3
 
 ### Design Patterns Implemented
@@ -44,40 +43,32 @@ src/Main.java
 See `UML_Diagram.png` in the root of this repository.
 
 ### Final Submission Goals
-The final demo will show a full checkout/return flow using all 6 patterns working together — a member checks out a book (Command + Singleton), gets a late fee on return (Strategy), sees book status decorated (Decorator), receives a notification (Observer), and items are created via factory (Factory).
+The final demo will show a full checkout/return flow using all 8 patterns working together.
 
 ### Sprint 3 Problems
-No blocking issues. All 6 patterns are implemented and integrated in Main.java.
+No blocking issues. All patterns are implemented and integrated in Main.java.
+
+---
 
 ## Sprint 4
 
 ### Design Patterns Added
 
-7. **Builder** — `MemberBuilder.java`: Builds `Member` objects step by step using a fluent interface. Sets name, member ID, membership type, and fee strategy. Automatically assigns the correct default fee strategy based on membership type if one is not explicitly provided.
-
-8. **Iterator** — `CatalogIterator.java`: Provides two custom iterators — `AllBooksIterator` walks every book in the catalog, and `AvailableBooksIterator` filters to only books not currently checked out. Both are accessed through `LibraryCatalog` via `getAllBooksIterator()` and `getAvailableBooksIterator()`.
-
-### Files Changed
-- `MemberBuilder.java` — new file (Builder pattern)
-- `CatalogIterator.java` — new file (Iterator pattern)
-- `Member.java` — updated to support new constructor used by MemberBuilder
-- `LibraryCatalog.java` — updated to expose iterator methods
-- `Main.java` — updated to demo all 8 patterns
-- `UML_Diagram.png` — updated to include all 8 patterns
+7. **Builder** — `MemberBuilder.java`: Builds Member objects step by step using a fluent interface. Automatically assigns the correct default fee strategy based on membership type.
+8. **Iterator** — `CatalogIterator.java`: Two custom iterators — AllBooksIterator and AvailableBooksIterator — walk through the catalog without exposing the internal list.
 
 ### UML Diagram
-See `UML_Diagram.png` in the root of this repository.
-
-### Final Submission Goals
-The final demo will show a full checkout/return flow using all 8 patterns working together — members are built with the Builder, the catalog is navigated with the Iterator, checkout/return uses the Command pattern with undo, fees are calculated via Strategy, items are created via Factory, book display uses Decorator, notifications go through the Observer, and a single catalog instance is maintained by the Singleton.
+See `UML_Diagram-2.png` in the root of this repository.
 
 ### Sprint 4 Problems
-No blocking issues. Builder and Iterator integrate cleanly with the existing codebase. Member's original constructor is preserved so no existing code breaks.
+No blocking issues. Builder and Iterator integrate cleanly with existing code.
+
+---
 
 ## Sprint 5
 
 ### Design Patterns Status
-All 8 design patterns are fully implemented and integrated:
+All 8 design patterns fully implemented and integrated:
 
 1. Singleton — LibraryCatalog
 2. Observer — LibraryObserver / Member
@@ -92,13 +83,21 @@ All 8 design patterns are fully implemented and integrated:
 See `UML_Diagram-2.png` in the root of this repository.
 
 ### Final Submission Goals
-The final demo will show a full library session: members built
-with Builder, catalog browsed with Iterator, books checked out
-and returned using Command (with undo), fees calculated via
-Strategy, items created via Factory, display enhanced with
-Decorator, notifications sent through Observer, all sharing
-one catalog via Singleton.
+The final demo will show a full library session: members built with Builder, catalog browsed with Iterator, books checked out and returned using Command (with undo), fees calculated via Strategy, items created via Factory, display enhanced with Decorator, notifications sent through Observer, all sharing one catalog via Singleton.
 
 ### Sprint 5 Problems
-No issues. All 8 patterns are complete and working together
-in Main.java.
+No issues. All 8 patterns are complete and working together in Main.java.
+
+---
+
+## Final Submission
+
+### Bugs / Known Issues
+- No major bugs. All 8 patterns compile and run correctly together.
+- The project runs as a console demo via Main.java showing all patterns in sequence.
+- No GUI implemented; the focus was on demonstrating design patterns through a working library checkout flow.
+
+### Notes
+- Entry point: `Main.java`
+- UML diagram: `UML_Diagram-2.png`
+- All 8 design patterns exceed the requirement of 6 for a solo project.
