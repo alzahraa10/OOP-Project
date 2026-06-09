@@ -2,14 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 // DESIGN PATTERN 1: SINGLETON
-// Ensures only one instance of the library catalog exists
 public class LibraryCatalog {
     private static LibraryCatalog instance;
     private List<Book> books;
 
     private LibraryCatalog() {
         books = new ArrayList<>();
-        // Add some starter books
         books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", "978-0743273565"));
         books.add(new Book("To Kill a Mockingbird", "Harper Lee", "978-0061935466"));
         books.add(new Book("1984", "George Orwell", "978-0451524935"));
@@ -39,12 +37,10 @@ public class LibraryCatalog {
     public List<Book> getAllBooks() { return books; }
 
     // DESIGN PATTERN 8: ITERATOR
-    // Returns an iterator over all books in the catalog
     public LibraryIterator getAllBooksIterator() {
         return new AllBooksIterator(books);
     }
 
-    // Returns an iterator over only available (not checked out) books
     public LibraryIterator getAvailableBooksIterator() {
         return new AvailableBooksIterator(books);
     }
@@ -54,4 +50,3 @@ public class LibraryCatalog {
         for (Book b : books) System.out.println(b);
     }
 }
-
