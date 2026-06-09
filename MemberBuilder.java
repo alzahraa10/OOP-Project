@@ -1,10 +1,10 @@
-// Pattern 7: Builder
+// DESIGN PATTERN 7: BUILDER
 // Builds a Member object step by step instead of using a complex constructor.
 
 public class MemberBuilder {
     private String name;
     private String memberId;
-    private String membershipType; // "STANDARD", "PREMIUM", "STUDENT"
+    private String membershipType;
     private FeeStrategy feeStrategy;
 
     public MemberBuilder setName(String name) {
@@ -31,7 +31,6 @@ public class MemberBuilder {
         if (name == null || memberId == null) {
             throw new IllegalStateException("Member must have a name and ID.");
         }
-        // Default fee strategy based on membership type if not explicitly set
         if (feeStrategy == null) {
             if ("PREMIUM".equalsIgnoreCase(membershipType)) {
                 feeStrategy = new PremiumFeeStrategy();
